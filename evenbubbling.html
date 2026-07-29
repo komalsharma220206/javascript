@@ -1,0 +1,70 @@
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .child{
+        background-color: cornflowerblue;
+        border:2px solid black;
+        margin:10px;
+        padding:10px;
+        cursor: pointer;
+    }
+    .childcont{
+        background-color:yellow;
+        margin:10px;
+        padding:10px;
+    }
+    .cont{
+         background-color:rgb(220, 138, 22);
+        margin:10px;
+        padding:10px;
+    }
+</style>
+<body>
+    <div class="cont">
+        <section class="childcont">
+             <div class="child">
+                i am a child
+             </div>
+            </section>
+    </div>
+    <script>
+        let cont=document.querySelector(".child")
+        cont.addEventListener("click",(e)=>{
+            e.stopPropagation()
+            alert("child was clicked")
+        })
+        let cont1=document.querySelector(".childcont")
+        cont1.addEventListener("click",(e)=>{
+            e.stopPropagation()
+            alert("child container was clicked")
+        })
+        let cont2=document.querySelector(".cont")
+        cont2.addEventListener("click",()=>{
+           alert("container was clicked")
+        })
+        function getrandomcolour(){
+            let val1=Math.ceil(0+Math.random() *255);
+            let val2=Math.ceil(0+Math.random() *255);
+            let val3=Math.ceil(0+Math.random() *255);
+            return `rgb(${val1},${val2},${val3})`;
+
+        }
+        // let a=setInterval(() => {
+        //     cont1.style.background=getrandomcolour();
+        // }, 1000);
+        setInterval(() => {
+            cont2.style.background=getrandomcolour();
+        }, 800);
+        setInterval(() => {
+            cont1.style.background=getrandomcolour();
+        }, 800);
+    </script>
+</body>
+</html>
